@@ -1,0 +1,4 @@
+PermitRootLogin prohibit-password
+AuthorizedKeysFile      .ssh/authorized_keys
+PermitRootLogin yes
+Subsystem       sftp     internal-sftp
