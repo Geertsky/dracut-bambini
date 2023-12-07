@@ -10,5 +10,8 @@ The functioning initramfs was built using:
 
 ```
 F=$(cat binaries)
-sudo dracut -NM -I "$F" -i /usr/lib/python3.11/ /usr/lib/python3.11/ -i /home/geert/git/geertsky/dracut-bambini/etc/ssh/sshd_config /etc/ssh/sshd_config -a "sshd network lvm systemd-resolved" /home/geert/work/ansible-initrd/initramfs-try-$(uname -r).img $(uname -r) --force
+PYTHON_INCLUDES=$(python -c 'import sys; print("\n".join("{}".format(k) for k in sys.path if k not in ["/home/geert/.local/lib/python3.11/site-packages"]))')
+sudo dracut -NM -I "$F" $PYTHON_INCLUDES -i /home/geert/git/geertsky/dracut-bambini/etc/ssh/sshd_config /etc/ssh/sshd_config -a "sshd network lvm systemd-resolved" /home/geert/work/ansible-initrd/initramfs-try-$(uname -r).img $(uname -r) --force
 ```
+//NOTE: The `PYTHON_INCLUDES` should be viewed initially and the `not in ["/home/geert/.local/lib/python3.11/site-packages"]` modified accordingly //
+
