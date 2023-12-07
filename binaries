@@ -103,6 +103,7 @@
 /usr/bin/rpm2cpio
 /usr/bin/rpm2archive
 /usr/bin/rpm
+/usr/bin/dnf
 /usr/bin/dnf-3
 /usr/bin/curl
 /usr/bin/rpmdumpheader
