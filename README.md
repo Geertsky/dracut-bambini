@@ -1,4 +1,4 @@
-Dracut module for use with Ansible
+Dracut module for bare metal install using Ansible
 ==================================
 
 This module is used for the ansible-OSinstall_initramfs ansible role and contains currently only a list of binaries to include in the initramfs.
