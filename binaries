@@ -6,6 +6,7 @@
 /usr/sbin/mkfs.ext4
 /usr/sbin/mkfs.ext3
 /usr/sbin/mkfs.ext2
+/usr/sbin/mkfs.vfat
 /usr/sbin/mke2fs
 /usr/sbin/fsck.ext4
 /usr/sbin/fsck.ext3
@@ -16,8 +17,6 @@
 /usr/sbin/e2undo
 /usr/sbin/e2mmpstatus
 /usr/sbin/e2label
-
-
 /usr/sbin/e2image
 /usr/sbin/e2fsck
 /usr/sbin/e2freefrag
@@ -98,6 +97,7 @@
 /usr/bin/lsattr
 /usr/bin/fuse2fs
 /usr/bin/chattr
+/usr/bin/openssl
 /usr/bin/rpmkeys
 /usr/bin/rpmdb
 /usr/bin/rpm2cpio
@@ -280,7 +280,7 @@
 /usr/bin/sha256hmac
 /usr/bin/sha224hmac
 /usr/bin/sha1hmac
-/usr/bin/python3.11
+/usr/bin/python3
 /usr/bin/sdiff
 /usr/bin/diff3
 /usr/bin/diff
@@ -371,3 +371,5 @@
 /usr/bin/getopts
 /usr/bin/fc
 /usr/bin/command
+/usr/sbin/chroot
+
