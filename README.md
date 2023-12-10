@@ -1,19 +1,23 @@
-Dracut module for bare metal install using Ansible
+Dracut module for Bare Metal Install using Ansible
 ==================================
 
-This module is used for the ansible-OSinstall_initramfs ansible role and contains currently only a list of binaries to include in the initramfs.
+This dracut module is used for the ansible Bare Metal Install role [ansible-bambini](Bare Metal Install).
+
+Installing the dracut-bambini module
+------------------------------------
+
+Copy or link the `94bambini` directory to `/usr/lib/dracut/modules.d/` directory
 
 Building the initramfs
 ----------------------
 
-The functioning initramfs was built using:
+The initramfs image can be built using the following command:
 
 ```
-BINARIES=$(cat binaries)
-PYTHON_INCLUDES=$(python -c 'import sys; print("\n-i ".join("{} {}".format(k,k) for k in sys.path if k not in ["/home/geert/.local/lib/python3.11/site-packages"]))')
-VARIOUS_INCLUDES=$(sed 's/\(.*\)/-i \1 \1/' includes)
-
-sudo dracut -NM -I "$BINARIES" $PYTHON_INCLUDES $VARIOUS_INCLUDES -a "sshd network lvm systemd-resolved" /home/geert/work/ansible-initrd/initramfs-try-$(uname -r).img $(uname -r) --force
+sudo dracut -NM $(python /usr/lib/dracut/modules.d/94bambini/print-python-includes.py) -a "bambini network lvm systemd-resolved" ansible-bambini-initramfs-$(uname -r).img $(uname -r) 
 ```
-_NOTE: The `PYTHON_INCLUDES` command should be viewed initially without the `not in ["/home/geert/.local/lib/python3.11/site-packages"]` part and it should be modified accordingly_
+_NOTE: The output of the `print-python-includes.py` should be reviewed. Currently, only/all the paths starting with `/home` are excluded. This might be too restrictive or possibly not restrictive enough. The `exclude` array should be modified accordingly_
 
+Booting the ansible-bambini-initramfs
+-------------------------------------
+The initramfs file together with it's kernel need to be fed to the server by any way possible. For instance: PXE, qemu/kvm Direct kernel boot, customized grub. 
