@@ -9,9 +9,11 @@ Building the initramfs
 The functioning initramfs was built using:
 
 ```
-F=$(cat binaries)
+BINARIES=$(cat binaries)
 PYTHON_INCLUDES=$(python -c 'import sys; print("\n-i ".join("{} {}".format(k,k) for k in sys.path if k not in ["/home/geert/.local/lib/python3.11/site-packages"]))')
-sudo dracut -NM -I "$F" $PYTHON_INCLUDES -i /home/geert/git/geertsky/dracut-bambini/etc/ssh/sshd_config /etc/ssh/sshd_config -a "sshd network lvm systemd-resolved" /home/geert/work/ansible-initrd/initramfs-try-$(uname -r).img $(uname -r) --force
+VARIOUS_INCLUDES=$(sed 's/\(.*\)/-i \1 \1/' includes)
+
+sudo dracut -NM -I "$BINARIES" $PYTHON_INCLUDES $VARIOUS_INCLUDES -a "sshd network lvm systemd-resolved" /home/geert/work/ansible-initrd/initramfs-try-$(uname -r).img $(uname -r) --force
 ```
-_NOTE: The `PYTHON_INCLUDES` should be viewed initially and the `not in ["/home/geert/.local/lib/python3.11/site-packages"]` modified accordingly_
+_NOTE: The `PYTHON_INCLUDES` command should be viewed initially without the `not in ["/home/geert/.local/lib/python3.11/site-packages"]` part and it should be modified accordingly_
 
