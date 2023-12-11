@@ -1,7 +1,7 @@
 Dracut module for Bare Metal Install using Ansible
 ==================================
 
-This dracut module is used for the ansible Bare Metal Install role [ansible-bambini](Bare Metal Install).
+This dracut module is used for the ansible Bare Metal Install role [ansible-bambini](https://github.com/Geertsky/ansible-bambini).
 
 Installing the dracut-bambini module
 ------------------------------------
