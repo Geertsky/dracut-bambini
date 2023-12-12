@@ -23,7 +23,7 @@ install() {
   #using a text files to keep things dynamic for now...
   inst_multiple $(cat binaries)
   inst_multiple $(cat includes)
-  mv "$initdir/etc/ssh/sshd_config{,.bak}"
+  mv "$initdir/etc/ssh/sshd_config" "$initdir/etc/ssh/sshd_config.bak"
   awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "$initdir/etc/ssh/sshd_config.bak" >"$initdir/etc/ssh/sshd_config"
   #  for P in $(python print-python-includes.py | sort -u); do
   #    if [ -n "$PREVIOUS" ] && [ -n "$(echo $P | grep $PREVIOUS)" ]; then
