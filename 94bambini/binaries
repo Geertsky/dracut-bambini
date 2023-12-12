@@ -145,7 +145,6 @@ nohup
 mv
 mktemp
 mknod
-mkfifo
 mkdir
 md5sum
 ls
