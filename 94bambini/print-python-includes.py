@@ -6,4 +6,4 @@ for P in sys.path:
     for R in excludes:
         if not re.search(R,P):
             if os.path.exists(P):
-                print("-i "+P+" "+P)
+                print(P)
