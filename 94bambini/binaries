@@ -230,3 +230,5 @@ hash
 getopts
 command
 chroot
+/usr/libexec/openssh/sshd-keygen
+ssh-keygen

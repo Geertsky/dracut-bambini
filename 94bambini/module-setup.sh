@@ -14,18 +14,38 @@ check() {
 
 # called by dracut
 depends() {
-  echo sshd
+  echo "sshd"
 }
 
 # called by dracut
 install() {
-  cd "$moddir"
+  #Install binaries and additional includes
+  cd "${moddir}"
   #using a text files to keep things dynamic for now...
   inst_multiple $(cat binaries)
   inst_multiple $(cat includes)
-  #requested sftp inclusion https://github.com/gsauthof/dracut-sshd/pull/74
-  mv "$initdir/etc/ssh/sshd_config" "$initdir/etc/ssh/sshd_config.bak"
-  awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "$initdir/etc/ssh/sshd_config.bak" >"$initdir/etc/ssh/sshd_config"
+
+  #add permanent ssh-keygen
+  mkdir -p "${initdir}/etc/systemd/system/sshd.service.d/"
+  inst "${moddir}/wants.conf" "/etc/systemd/system/sshd.service.d/wants.conf"
+  inst "${moddir}/after.conf" "/etc/systemd/system/sshd.service.d/after.conf"
+  inst "${moddir}/sshd-keygen@.service" "$systemdsystemunitdir/sshd-keygen@.service"
+  inst "${moddir}/sshd-keygen.target" "$systemdsystemunitdir/sshd-keygen.target"
+  mkdir -p "${initdir}/etc/systemd/system/sshd-keygen@.service.d/"
+  inst "${moddir}/execstartpre.conf" "/etc/systemd/system/sshd-keygen@.service.d/execstartpre.conf"
+  inst "${moddir}/conditionfilenotempty.conf" "/etc/systemd/system/sshd-keygen@.service.d/conditionfilenotempty.conf"
+  for F in "/etc/systemd/system/sshd.service.d/wants.conf" "/etc/systemd/system/sshd.service.d/after.conf" "${systemdsystemunitdir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen.target" "/etc/systemd/system/sshd-keygen@.service.d/execstartpre.conf" "/etc/systemd/system/sshd-keygen@.service.d/conditionfilenotempty.conf"; do
+    chown root:root "${initdir}/${F}"
+  done
+  for key in ecdsa ed25519 rsa; do
+    $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
+  done
+
+  #check if internal-sftp is enabled otherwise enable it here
+  if ! grep -q internal-sftp ${initdir}/etc/ssh/sshd_config; then
+    mv "${initdir}/etc/ssh/sshd_config" "${initdir}/etc/ssh/sshd_config.bak"
+    awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "$initdir/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
+  fi
   include_src=($(python print-python-includes.py))
   for ((i = 0; i < ${#include_src[@]}; i++)); do
     src="${include_src[$i]}"
