@@ -186,7 +186,6 @@ sha384hmac
 sha256hmac
 sha224hmac
 sha1hmac
-python3
 sdiff
 diff3
 diff
