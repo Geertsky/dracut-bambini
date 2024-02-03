@@ -48,48 +48,16 @@ install() {
     mv "${initdir}/etc/ssh/sshd_config" "${initdir}/etc/ssh/sshd_config.bak"
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
-  #copy directories recursivly taken from /usr/bin/dracut
-  include_src=($(python print-python-includes.py))
-  #include_src=("/tmp/dracut-bambini/versions/3.11.6" "/tmp/dnf")
-  for ((i = 0; i < ${#include_src[@]}; i++)); do
-    src="${include_src[$i]}"
-    # for pyenv python: target="${src:${#src}}/"
-    target="$src"
-    if [[ "${src}" && "${target}" ]]; then
-      if [[ -f "${src}" ]]; then
-        inst "${src}" "${target}"
-      elif [[ -d "${src}" ]]; then
-        ddebug "Including directory: ${src}"
-        destdir="${initdir}/${target}"
-        mkdir -p "${destdir}"
-        # check for preexisting symlinks, so we can cope with the
-        # symlinks to $prefix
-        # Objectname is a file or a directory
-        reset_dotglob="$(shopt -p dotglob)"
-        shopt -q -s dotglob
-        for objectname in "${src}"/*; do
-          [[ -e "${objectname}" || -L "${objectname}" ]] || continue
-          if [[ -d "${objectname}" ]] && [[ ! -L "${objectname}" ]]; then
-            # objectname is a directory, let's compute the final directory name
-            object_destdir="${destdir}/${objectname#$src/}"
-            if ! [[ -e "${object_destdir}" ]]; then
-              # shellcheck disable=SC2174
-              mkdir -m 0755 -p "${object_destdir}"
-              chmod --reference="${objectname}" "${object_destdir}"
-            fi
-            $DRACUT_CP -t "${object_destdir}" "${dracutsysrootdir}${objectname}"/.
-          else
-            $DRACUT_CP -t "${destdir}" "${dracutsysrootdir}${objectname}"
-          fi
-        done
-        eval "${reset_dotglob}"
-      elif [[ -e "${src}" ]]; then
-        derror "${src} is neither a directory nor a regular file"
-      else
-        derror "${src} doesn't exist"
-      fi
-    fi
-  done
+
+  #Build and install python
+  #tar --keep-directory-symlink --skip-old-files -zxf "${moddir}"/python.tgz -C "${initdir}"
+  tar --keep-directory-symlink --skip-old-files -xf "${moddir}"/python-blivet3.tar -C "${initdir}"
+
+  #install libblockdev
+  inst "$(ldconfig -p | awk '$1 ~ /^libblockdev/{print $NF}')"
+
+  #install libbytesize
+  inst "$(ldconfig -p | awk '$1 ~ /^libbytesize/{print $NF}')"
 
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
   inst_hook pre-mount 50 "${moddir}/wait-for-ansible-finished.sh"
