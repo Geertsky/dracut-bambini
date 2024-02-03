@@ -25,7 +25,7 @@ install() {
   cd "${moddir}"
   #using a text files to keep things dynamic for now...
   inst_multiple $(cat binaries)
-  inst_multiple $(cat includes)
+  inst_multiple /usr/lib/rpm/rpmrc /usr/lib/rpm/macros /usr/lib/rpm/redhat/rpmrc
 
   #check if internal-sftp is enabled otherwise enable it here
   if ! grep -q internal-sftp ${initdir}/etc/ssh/sshd_config; then
