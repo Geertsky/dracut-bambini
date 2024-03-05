@@ -44,7 +44,7 @@ install() {
   done
 
   #check if internal-sftp is enabled otherwise enable it here
-  if ! grep -q internal-sftp ${initdir}/etc/ssh/sshd_config; then
+  if ! grep -q internal-sftp "${initdir}"/etc/ssh/sshd_config; then
     mv "${initdir}/etc/ssh/sshd_config" "${initdir}/etc/ssh/sshd_config.bak"
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
