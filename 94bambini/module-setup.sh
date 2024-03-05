@@ -54,10 +54,10 @@ install() {
   tar --keep-directory-symlink --skip-old-files -xf "${moddir}"/python-blivet3.tar -C "${initdir}"
 
   #install libblockdev
-  inst "$(ldconfig -p | awk '$1 ~ /^libblockdev/{print $NF}')"
+  ##inst "$(ldconfig -p | awk '$1 ~ /^libblockdev/{print $NF}')"
 
   #install libbytesize
-  inst "$(ldconfig -p | awk '$1 ~ /^libbytesize/{print $NF}')"
+  ##inst "$(ldconfig -p | awk '$1 ~ /^libbytesize/{print $NF}')"
 
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
   inst_hook pre-mount 50 "${moddir}/wait-for-ansible-finished.sh"
