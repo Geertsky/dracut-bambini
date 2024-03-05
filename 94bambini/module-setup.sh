@@ -51,8 +51,13 @@ install() {
 
   #Build and install python
   #tar --keep-directory-symlink --skip-old-files -zxf "${moddir}"/python.tgz -C "${initdir}"
-  tar --keep-directory-symlink --skip-old-files -xf "${moddir}"/python-blivet3.tar -C "${initdir}"
-
+  #  tar --keep-directory-symlink -xf "${moddir}"/bambini-blivet.tar -C "${initdir}"
+  mkdir -p "${initdir}/local/conda/envs/bambini-blivet"
+  tar -xvf "${moddir}/conda/bambini-blivet.tar.gz" -C "${initdir}/local/conda/envs/bambini-blivet/"
+  echo export PATH="/local/conda/envs/bambini-blivet/bin/:\$PATH" >>"${initdir}/root/.profile"
+  for F in "${initdir}"/local/conda/envs/bambini-blivet/*.sh; do
+    cat "$F" >>"${initdir}"/root/.profile
+  done
   #install libblockdev
   ##inst "$(ldconfig -p | awk '$1 ~ /^libblockdev/{print $NF}')"
 
