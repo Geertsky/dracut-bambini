@@ -2,7 +2,7 @@
 
 This [dracut](https://dracut.wiki.kernel.org/index.php/Main_Page) module is created for the ansible bare-metal-install role [ansible-bambini](https://github.com/Geertsky/ansible-bambini).
 It does the following:
-* include `python` in the initial ramdisk
+* include `python` in the initial ramdisk. Work is on the way to make use of a conda environment. See issue: #6
 * pause the boot process just before the root filesystem gets mounted(`pre-mount` hook) 
 * depends on the [dracut-sshd](https://github.com/gsauthof/dracut-sshd) module.
 
