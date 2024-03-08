@@ -2,7 +2,7 @@
 
 This [dracut](https://dracut.wiki.kernel.org/index.php/Main_Page) module is created for the ansible bare-metal-install role [ansible-bambini](https://github.com/Geertsky/ansible-bambini).
 It does the following:
-* include `python` in the initial ramdisk
+* include `python` in the initial ramdisk. By packaging a conda environment. 
 * pause the boot process just before the root filesystem gets mounted(`pre-mount` hook) 
 * depends on the [dracut-sshd](https://github.com/gsauthof/dracut-sshd) module.
 
@@ -13,13 +13,33 @@ This combination makes it possible to partition a disk and install an OS on the 
 Clone this repository and copy or link the `94bambini` directory to the `/usr/lib/dracut/modules.d/` directory.
 
 ## Building the initramfs
+### Prerequisites
+#### conda python
+___(Work In Progress)___
+
+The python inside the initial ramdisk is a [conda](https://docs.conda.io/en/latest/) environment. 
+The requirements for this conda environment:
+* named: `bambini-python`
+* packed and stored in `/usr/lib/dracut/modules.d/bambini-python.tar
+* conda modules to include:
+  * blivet
+  * cryptsetup
+  * parted
+  * libblockdev
+  * libbytesize
+  * libkmod
+  * libnvme
+  * libndctl
+The conda recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/conda-recipes/) and hosted at [anaconda.org/geertsky](https://anaconda.org/geertsky/repo)
+
+
+### initramfs build command
 
 The initramfs image can be built using the following command:
 
 ```
 sudo dracut -NM -a "bambini network lvm systemd-resolved" ansible-bambini-initramfs-$(uname -r).img $(uname -r) 
 ```
-_NOTE: When your python `sys.path` contains additional includes out of the scope of the default sys.path you'll have to exclude them by adding a regex to the excludes list in `/usr/lib/dracut/94bambini/print-python-includes.py`. Work is on the way to prevent this requirement:[See: issues/#6](https://github.com/Geertsky/dracut-bambini/issues/6)_
 
 ## Booting the ansible-bambini-initramfs
 The initramfs file together with it's kernel need to be fed to the server by any way possible. For instance: PXE, qemu/kvm Direct kernel boot, customized grub.
