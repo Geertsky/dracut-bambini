@@ -13,6 +13,27 @@ This combination makes it possible to partition a disk and install an OS on the 
 Clone this repository and copy or link the `94bambini` directory to the `/usr/lib/dracut/modules.d/` directory.
 
 ## Building the initramfs
+### Prerequisites
+#### conda python
+___(Work In Progress)___
+
+The python inside the initial ramdisk is a [conda](https://docs.conda.io/en/latest/) environment. 
+The requirements for this conda environment:
+* named: `bambini-python`
+* packed and stored in `/usr/lib/dracut/modules.d/bambini-python.tar
+* conda modules to include:
+  * _blivet_
+  * cryptsetup
+  * parted
+  * _libblockdev_
+  * libbytesize
+  * _libkmod_
+  * _libnvme_
+  * _libndctl_
+The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/conda-recipes/)
+
+
+### initramfs build command
 
 The initramfs image can be built using the following command:
 
