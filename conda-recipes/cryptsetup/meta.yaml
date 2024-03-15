@@ -1,0 +1,37 @@
+package:
+  name: cryptsetup
+  version: "0.1"
+
+source:
+  git_url: https://github.com/mbroz/cryptsetup.git
+  git_depth: 1
+
+requirements:
+  host:
+  build:
+    - git
+    - {{ compiler('c') }}
+    - asciidoctor
+    - automake
+    - autoconf
+    - findutils
+    - json-c
+    - kernel-headers_linux-64
+    - libdevmapper
+    - libgcrypt
+    - libuuid
+    - libssh
+    - make 
+    - openssl >=0.9.8
+    - popt
+    - pkgconfig
+    - util-linux
+
+test:
+  commands:
+    - cryptsetup --help
+
+about:
+  home: https://github.com/mbroz/cryptsetup
+  license: LGPLv2.1
+  doc_url: https://gitlab.com/cryptsetup/cryptsetup#documentation

@@ -1,0 +1,19 @@
+{% set version = {{ GIT_DESCRIBE_TAG|replace('-','_') }}.{{ GIT_BUILD_STR|replace('-','_') }} %}
+package:
+  name: libbytesize
+  version: "{{ version }}"
+
+source:
+  git_url: https://github.com/storaged-project/libbytesize.git
+
+requirements:
+  build:
+    - git
+    - {{ compiler('c') }}
+  host:
+    - conda-forge/linux-64::pcre2
+    - conda-forge/linux-64::gmp
+    - conda-forge/linux-64::mpfr
+  run:
+
+
