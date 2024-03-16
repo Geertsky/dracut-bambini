@@ -30,12 +30,12 @@ The requirements for this conda environment:
   * _libkmod_
   * _libnvme_
   * _libndctl_
-The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/conda-recipes/)
+The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/]([https://github.com/Geertsky/dracut-bambini/conda-recipes/](https://github.com/Geertsky/dracut-bambini/tree/main/conda-recipes)
 
 
 ### initramfs build command
 
-The initramfs image can be built using the following command:
+The initramfs image can be built usig the following command:
 
 ```
 sudo dracut -NM -a "bambini network lvm systemd-resolved" ansible-bambini-initramfs-$(uname -r).img $(uname -r) 
