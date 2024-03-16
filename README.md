@@ -30,7 +30,7 @@ The requirements for this conda environment:
   * _libkmod_
   * _libnvme_
   * _libndctl_
-The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/]([https://github.com/Geertsky/dracut-bambini/conda-recipes/](https://github.com/Geertsky/dracut-bambini/tree/main/conda-recipes)
+The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/tree/main/conda-recipes)
 
 
 ### initramfs build command
