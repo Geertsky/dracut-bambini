@@ -3,12 +3,17 @@ set -x
 #export CFLAGS=$CFLAGS" -I$BUILD_PREFIX/include"
 export PKG_CONFIG_PATH=$BUILD_PREFIX/lib/pkgconfig/
 export CPPFLAGS="$CPPFLAGS"' -I '$BUILD_PREFIX'/include'
-echo mkdir -p $PREFIX
-mkdir -p $PREFIX
-ls -ld $PREFIX
+#echo mkdir -p $PREFIX
+#mkdir -p $PREFIX
+#ls -ld $PREFIX
 ./autogen.sh
-./configure \
-  --disable-rpath \ 
---prefix=$PREFIX
+./configure --disable-rpath --prefix="$PREFIX" --with-tmpfilesdir="$PREFIX"/lib/tmpfiles.d
 make
 make install
+# Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
+# This will allow them to be run on environment activation.
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    cp "${RECIPE_DIR}/${CHANGE}.sh" "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+done
