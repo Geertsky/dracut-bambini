@@ -1,0 +1,16 @@
+package:
+  name: libbytesize
+  version: 2.10
+
+source:
+  url: https://github.com/storaged-project/libbytesize/releases/download/2.10/libbytesize-2.10.tar.gz
+  md5: 2ed2ad2e44c4017f016e1ca55be83e62
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - gmp
+    - mpfr
+    - pcre2
+    - pygments
+    - six
