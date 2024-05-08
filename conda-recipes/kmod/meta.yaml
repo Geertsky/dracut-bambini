@@ -1,0 +1,22 @@
+# ------------------------------------------------
+package:
+    name: kmod
+    version: "32"
+source:
+  url: https://github.com/kmod-project/kmod/archive/refs/tags/v32.tar.gz
+  md5: d4add077d68d22855082a62916d81d0e
+requirements:
+  build:
+    - autoconf
+    - automake
+    - {{ compiler('c') }}
+    - gtk-doc
+    - libtool
+    - pkgconfig
+  
+  host:
+    - gtk-doc
+    - openssl
+    - xz
+    - zlib
+    - zstd

@@ -1,0 +1,36 @@
+name: bambini-python 
+channels:
+  - local
+  - /home/geert/miniforge3/conda-bld
+  - conda-forge
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - attr=2.5.1=h166bdaf_1
+  - bzip2=1.0.8=hd590300_5
+  - e2fsprogs=1.47=h9bf148f_0
+  - gmp=6.3.0=h59595ed_1
+  - keyutils=1.6.1=h166bdaf_0
+  - libaio=0.3.113=h166bdaf_0
+  - libblockdev=3.1.1=h9bf148f_0
+  - libbytesize=2.10=h9bf148f_0
+  - libcap=2.69=h0f662aa_0
+  - libdevmapper=2.02.187=h7f98852_1
+  - libffi=3.4.2=h9bf148f_0
+  - libgcc-ng=13.2.0=h77fa898_7
+  - libglib=2.80.2=hf974151_0
+  - libgomp=13.2.0=h77fa898_7
+  - libiconv=1.17=h9bf148f_0
+  - libsqlite=3.45.3=h2797004_0
+  - libstdcxx-ng=13.2.0=hc0a3c3a_7
+  - libudev1=255=h3f72095_1
+  - libuuid=2.38.1=h0b41bf4_0
+  - libzlib=1.2.13=hd590300_5
+  - lvm2=2.03.23=h9bf148f_0
+  - mpfr=4.2.1=h9458935_1
+  - nspr=4.35=h27087fc_0
+  - nss=3.100=hca3bf56_0
+  - parted=3.6=h9bf148f_0
+  - pcre2=10.43=hcad00b1_0
+  - python_abi=3.12=4_cp312
+prefix: /home/geert/miniforge3/envs/bambini-python

@@ -51,13 +51,11 @@ install() {
 
   #Build and install python
   #tar --keep-directory-symlink --skip-old-files -zxf "${moddir}"/python.tgz -C "${initdir}"
-  tar --keep-directory-symlink --skip-old-files -xf "${moddir}"/python-blivet3.tar -C "${initdir}"
-
-  #install libblockdev
-  inst "$(ldconfig -p | awk '$1 ~ /^libblockdev/{print $NF}')"
-
-  #install libbytesize
-  inst "$(ldconfig -p | awk '$1 ~ /^libbytesize/{print $NF}')"
+  mkdir -p "${initdir}/local/conda/envs/bambini-python"
+  tar -xvf "${moddir}/conda/bambini-python.tar.gz" -C "${initdir}/local/conda/envs/bambini-python/"
+  mkdir "${initdir}/etc/ld.so.conf.d/"
+  echo "/usr/lib64/" > "${initdir}/etc/ld.so.conf.d/libudev-x86_64.conf"
+  chroot "${initdir}" ldconfig
 
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
   inst_hook pre-mount 50 "${moddir}/wait-for-ansible-finished.sh"

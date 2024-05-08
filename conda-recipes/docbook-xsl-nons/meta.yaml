@@ -1,0 +1,18 @@
+# ------------------------------------------------
+package:
+    name: docbook-slt-nons
+    version: "1.79.2"
+source:
+  url: https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2
+  md5: 2666d1488d6ced1551d15f31d7ed8c38
+requirements:
+  build:
+    - {{ compiler('c') }}
+  
+  host:
+    - libxml2
+  
+about:
+    description: GTK-Doc - Documentation generator for C code
+    home: https://gitlab.gnome.org/GNOME/gtk-doc
+    license: GPL (>= 2)

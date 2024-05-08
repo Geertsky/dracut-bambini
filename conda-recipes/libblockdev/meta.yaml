@@ -1,0 +1,32 @@
+package:
+  name: libblockdev
+  version: "3.1.1"
+
+source:
+  url: https://github.com/storaged-project/libblockdev/releases/download/3.1.1-1/libblockdev-3.1.1.tar.gz
+  md5: 28d43f2d6bff85245502a8c4c478c5a3
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - pkgconfig
+  host:
+    - cryptsetup
+    - e2fsprogs
+    - glib
+    - gobject-introspection
+    - gtk-doc
+    - keyutils
+    - kernel-headers_linux-64
+    - kmod
+    - libbytesize
+    - libdevmapper
+    - libffi
+    - libnvme
+    - libudev
+    - libuuid
+    - lvm2
+    - nss
+    - parted
+    - pygobject
+    - volume_key

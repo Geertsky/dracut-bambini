@@ -1,10 +1,11 @@
 package:
   name: cryptsetup
-  version: "0.1"
+  version: "2.7.0"
 
 source:
-  git_url: https://github.com/mbroz/cryptsetup.git
-  git_depth: 1
+  url: https://www.kernel.org/pub/linux/utils/cryptsetup/v2.7/cryptsetup-2.7.0.tar.xz
+  md5sum: 7210d45a19703bca547e8ba190278cb0
+
 
 requirements:
   host:

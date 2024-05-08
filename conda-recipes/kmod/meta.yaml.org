@@ -1,0 +1,35 @@
+# This file created by conda-build 3.4.1
+# meta.yaml template originally from:
+# /home/nwani/conda/aggregate/kmod-cos7-ppc64le, last modified Fri Feb  2 10:06:19 2018
+# ------------------------------------------------
+{% set readme_heading = load_file_regex(load_file='/proc/version', regex_pattern=r'^# (\S+)') %}
+
+package:
+    name: kmod-cos7-ppc64le
+    version: '20'
+source:
+    -   folder: binary
+        sha256: 7b9baca368ec0583ac5ae0d8e19291a87a8901d657d96e3956df0183aef690aa
+        url: http://mirror.centos.org/altarch/7/os/ppc64le/Packages/kmod-20-15.el7.ppc64le.rpm
+    -   folder: source
+        url: http://vault.centos.org/7.4.1708/os/Source/SPackages/kmod-20-15.el7.src.rpm
+build:
+    noarch: generic
+    string: '0'
+about:
+    description: 'The kmod package provides various programs needed for automatic
+        loading and
+
+        unloading of modules under 2.6, 3.x, and later kernels, as well as other
+
+        module management programs. Device drivers and filesystems are two examples
+        of
+
+        loaded and unloaded modules.'
+    home: http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
+    license: GPL (>= 2)
+    license_family: GPL3
+    summary: (CDT) Linux kernel module management utilities
+extra:
+    copy_test_source_files: true
+    final: true
