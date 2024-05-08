@@ -1,0 +1,10 @@
+# ------------------------------------------------
+package:
+    name: xfsutils
+    version: "6.6.0"
+source:
+  url: https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-6.6.0.tar.xz
+  md5: c008a752fae65aaf761096eb4698df86
+requirements:
+  build:
+    - {{ compiler('c') }}
