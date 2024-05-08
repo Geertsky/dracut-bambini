@@ -1,0 +1,78 @@
+{% set local_glib_pin = ">=2.64" %}
+{% set name = "pygobject" %}
+{% set version = "3.48.1" %}
+{% set majmin = '.'.join(version.split('.', 2)[:2]) %}
+{% set local_glib_pin = '>=2.64' %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://download.gnome.org/sources/{{ name }}/{{ majmin }}/{{ name }}-{{ version }}.tar.xz
+  sha256: 3a0a2c0c0f25931b5840649c54834b9e58a63148d37fa9f6308887b7027e15c2
+
+build:
+  number: 0
+  skip: true  # [py<38]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - meson
+    - ninja
+    - pkg-config
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+  host:
+    - cairo
+    # This dep is intentionally written twice; the second time allows
+    # conda-build to add its global pin if one exists.
+    - glib {{ local_glib_pin }}
+    - glib
+    - gobject-introspection >=1.64
+    - libffi
+    - pycairo
+    - python
+  run:
+    - libgirepository
+    - libiconv  # on Windows we seem to need the conda-forge version here (see #15)
+    - pycairo
+    - python
+    - ucrt  # [win]
+
+test:
+  requires:
+    - pkg-config
+  imports:
+    - gi
+    - gi.pygtkcompat
+    - gi.repository.GLib
+  commands:
+    # verify that header gets installed and can be located through pkg-config
+    - test -f $PREFIX/include/pygobject-3.0/pygobject.h  # [unix]
+    - test -f `pkg-config --variable=pygobjectincludedir --dont-define-prefix pygobject-3.0`/pygobject.h  # [unix]
+    - if not exist %LIBRARY_INC%\\pygobject-3.0\\pygobject.h exit 1  # [win]
+    - for /f "usebackq tokens=*" %%a in (`pkg-config --variable=pygobjectincludedir --dont-define-prefix pygobject-3.0`) do if not exist "%%a/pygobject.h" exit 1  # [win]
+
+
+about:
+  home: https://pygobject.readthedocs.io
+  license: LGPL-2.1-or-later
+  license_family: LGPL
+  license_file: COPYING
+  summary: Python bindings for GObject Introspection
+
+  description: |
+    PyGObject is a Python package which provides bindings for GObject based libraries
+    such as GTK+, GStreamer, WebKitGTK+, GLib, GIO and many more.
+
+  doc_url: https://pygobject.readthedocs.io
+  dev_url: https://git.gnome.org/browse/pygobject
+
+extra:
+  recipe-maintainers:
+    - pkgw
+    - ryanvolz
+    - sebastian-luna-valero
+    - tschoonj
