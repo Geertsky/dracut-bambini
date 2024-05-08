@@ -1,6 +1,4 @@
 #!/bin/bash
-export PKG_CONFIG_PATH=$BUILD_PREFIX/lib/pkgconfig/
-export CPPFLAGS="$CPPFLAGS"' -I '$BUILD_PREFIX'/include'
 ./autogen.sh
 ./configure --disable-rpath --prefix="$PREFIX" --with-tmpfilesdir="$PREFIX"/lib/tmpfiles.d
 make
