@@ -1,0 +1,29 @@
+package:
+  name: volume_key
+  version: "0.3.12"
+
+source:
+  url: https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
+  md5: d1c76f24e08ddd8c1787687d0af5a814
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - autoconf
+    - automake
+    - pkgconfig
+    - gnupg
+    - gpgme
+    - libtool
+    - python 3.12
+  host:
+    - cryptsetup
+    - glib
+    - gpgme
+    - json-c
+    - libdevmapper
+    - libtool
+    - nss
+    - python 3.12
+    - swig
+    - util-linux
