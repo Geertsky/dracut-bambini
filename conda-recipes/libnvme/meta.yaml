@@ -1,0 +1,23 @@
+
+package:
+  name: libnvme
+  version: "1.8"
+
+source:
+  url: https://github.com/linux-nvme/libnvme/archive/refs/tags/v1.8/libnvme-1.8.tar.gz
+  md5: ff72b83dc2ada1da0bd528570154eed3
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - cmake
+    - meson
+    - ninja
+  host:
+    - json-c
+    - kernel-headers_linux-64
+    - keyutils
+    - openssl
+    - pkgconfig
+    - python 3.12
+    - swig
