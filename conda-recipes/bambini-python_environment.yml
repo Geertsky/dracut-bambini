@@ -1,4 +1,4 @@
-name: bambini-python 
+name: bambini-python
 channels:
   - local
   - /home/geert/miniforge3/conda-bld
@@ -8,6 +8,7 @@ dependencies:
   - _openmp_mutex=4.5=2_gnu
   - attr=2.5.1=h166bdaf_1
   - bzip2=1.0.8=hd590300_5
+  - dosfstools=4.2=h9bf148f_0
   - e2fsprogs=1.47=h9bf148f_0
   - gmp=6.3.0=h59595ed_1
   - keyutils=1.6.1=h166bdaf_0

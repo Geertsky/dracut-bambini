@@ -1,0 +1,12 @@
+package:
+  name: dosfstools
+  version: "4.2"
+
+source:
+  url: https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
+  md5: 49c8e457327dc61efab5b115a27b087a
+
+requirements:
+  host:
+  build:
+    - {{ compiler('c') }}
