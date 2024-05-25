@@ -9,24 +9,22 @@ source:
 
 requirements:
   host:
+    - libdevmapper
+    - libgcrypt
+    - libssh
+    - libxcrypt1
+    - popt
+    - util-linux
+    - json-c
+    - openssl
   build:
     - asciidoctor
     - autoconf
     - automake
     - {{ compiler('c') }}
-    - git
-    - json-c
     - kernel-headers_linux-64
-    - libdevmapper
-    - libgcrypt
-    - libssh
     - libtool
-    - libxcrypt1
     - pkgconfig
-    - popt
-    - util-linux
-  run:
-    - openssl
 
 test:
   commands:
