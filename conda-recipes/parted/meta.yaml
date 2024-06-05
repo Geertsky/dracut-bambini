@@ -27,7 +27,7 @@ requirements:
     - rsync
     - tar
     - texinfo
-    - util-linux
+    - util-linux=2.39.3
   run:
     - libiconv
     - lvm2

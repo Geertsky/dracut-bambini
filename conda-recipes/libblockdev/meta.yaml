@@ -29,4 +29,5 @@ requirements:
     - nss
     - parted
     - pygobject
+    - util-linux=2.39.3
     - volume_key
