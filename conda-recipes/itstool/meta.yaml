@@ -1,0 +1,13 @@
+# ------------------------------------------------
+package:
+    name: itstool
+    version: "2.0.7"
+source:
+  url: https://files.itstool.org/itstool/itstool-2.0.7.tar.bz2
+  md5: 267a3bdc72a2d8abb1b824f2ea32ee9b
+requirements:
+  build:
+    - {{ compiler('c') }}
+  
+  host:
+    - docbook-xml
