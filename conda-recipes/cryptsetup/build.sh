@@ -1,6 +1,5 @@
 #!/bin/bash
-./autogen.sh
-./configure --disable-rpath --prefix="$PREFIX" --with-tmpfilesdir="$PREFIX"/lib/tmpfiles.d
+./configure --prefix=${PREFIX} --disable-rpath --disable-ssh-token --disable-asciidoc #--enable-static --enable-shared=no
 make
 make install
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
