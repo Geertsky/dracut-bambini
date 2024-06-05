@@ -1,0 +1,13 @@
+# ------------------------------------------------
+
+package:
+  name: inih
+  version: 58
+source:
+  url: https://github.com/benhoyt/inih/archive/r58/inih-r58.tar.gz
+  md5: 5c9725320ad2c79e0b1f76568bd0ff24
+requirements:
+  build:
+    - meson
+    - ninja
+    - pkgconfig
