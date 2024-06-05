@@ -18,7 +18,7 @@ requirements:
   
   host:
     - docbook-xml
-    - docbook-slt-nons
+    - docbook-xsl-nons
     - glib
     - itstool
     - libxslt
