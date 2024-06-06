@@ -1,0 +1,16 @@
+package:
+  name: sgml-common
+  version: "0.6.3"
+
+source:
+  url: https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
+  md5: 103c9828f24820df86e55e7862e28974
+  patches:
+    - sgml-common-0.6.3-manpage-1.patch
+    - sgml-common-0.6.3-prefix-1.patch
+
+requirements:
+  build:
+    - autoconf
+    - automake
+    - {{ compiler('c') }}
