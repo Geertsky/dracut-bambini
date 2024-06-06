@@ -1,0 +1,48 @@
+{% set name = "blivet" %}
+{% set version = "3.10.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/blivet-{{ version }}.tar.gz
+  sha256: 37f6d79e644872f24ce363aaffbe03b0faecf97dd1dbeb77971f562a1a14a196
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - libblockdev 
+    - libbytesize 
+    - libgirepository
+    - lvm2
+    - pygobject
+    - pyparted
+    - python
+    - pyudev
+test:
+  imports:
+    - blivet
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: http://github.com/storaged-project/blivet
+  summary: Python module for system storage configuration
+  license: GPL-2.0 AND LGPL-2.1
+  license_file:
+    - COPYING
+    - COPYING.LESSER
+
+extra:
+  recipe-maintainers:
+    - Geertsky
