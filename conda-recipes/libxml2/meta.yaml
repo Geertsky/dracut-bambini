@@ -1,0 +1,15 @@
+# ------------------------------------------------
+package:
+    name: libxml2
+    version: "2.12.6"
+source:
+  url: https://download.gnome.org/sources/libxml2/2.12/libxml2-2.12.6.tar.xz
+  md5: 37fab9ace78d8a085af81dc9a19f36d9
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - python 3.12
+  host:
+    - python 3.12
+    - icu
+    - zlib
