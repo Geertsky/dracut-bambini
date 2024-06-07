@@ -7,6 +7,5 @@ source:
   md5: 49c8e457327dc61efab5b115a27b087a
 
 requirements:
-  host:
   build:
     - {{ compiler('c') }}
