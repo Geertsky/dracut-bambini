@@ -8,6 +8,7 @@ source:
   md5: 5c9725320ad2c79e0b1f76568bd0ff24
 requirements:
   build:
+    - {{ compiler('cxx') }}
     - meson
     - ninja
     - pkgconfig
