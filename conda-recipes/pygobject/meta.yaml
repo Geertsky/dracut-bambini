@@ -156,3 +156,6 @@ extra:
     - tschoonj
   remote_url: https://github.com/conda-forge/pygobject-feedstock
   sha: 695513d4a3f7bc8ede9952c618be276b31f24ee2
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

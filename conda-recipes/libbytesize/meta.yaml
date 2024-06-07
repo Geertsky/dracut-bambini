@@ -14,3 +14,6 @@ requirements:
     - pcre2
     - pygments
     - six
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

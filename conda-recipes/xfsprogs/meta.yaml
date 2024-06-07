@@ -8,3 +8,6 @@ source:
 requirements:
   build:
     - {{ compiler('c') }}
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

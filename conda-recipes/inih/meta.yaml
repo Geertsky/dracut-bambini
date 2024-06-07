@@ -12,3 +12,6 @@ requirements:
     - meson
     - ninja
     - pkgconfig
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

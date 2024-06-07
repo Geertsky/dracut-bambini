@@ -21,3 +21,6 @@ requirements:
     - pkgconfig
     - python 3.12
     - swig
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

@@ -27,3 +27,6 @@ requirements:
     - python
     - swig
     - util-linux=2.39.3=py312h40d0619_1
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

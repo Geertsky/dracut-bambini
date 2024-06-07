@@ -46,3 +46,6 @@ about:
 extra:
   recipe-maintainers:
     - Geertsky
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

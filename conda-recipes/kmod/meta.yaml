@@ -20,3 +20,6 @@ requirements:
     - xz
     - zlib
     - zstd
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

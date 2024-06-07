@@ -11,3 +11,6 @@ requirements:
     - libxml2=2.12.6=h9bf148f_0
     - sgml-common
     - libarchive
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

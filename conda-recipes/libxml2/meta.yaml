@@ -13,3 +13,6 @@ requirements:
     - python 3.12
     - icu
     - zlib
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]

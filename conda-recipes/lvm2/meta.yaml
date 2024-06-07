@@ -21,3 +21,6 @@ test:
 about:
   home: https://sourceware.org/lvm2/
   license:  BSD 2-Clause "Simplified" License.
+# Exclude Windows and macOS
+build:
+  skip: true  # [win or osx]
