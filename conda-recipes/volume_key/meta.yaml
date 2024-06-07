@@ -15,7 +15,7 @@ requirements:
     - gnupg
     - gpgme
     - libtool
-    - python 3.12
+    - python
   host:
     - cryptsetup
     - glib
@@ -24,6 +24,6 @@ requirements:
     - libdevmapper
     - libtool
     - nss
-    - python 3.12
+    - python
     - swig
     - util-linux=2.39.3=py312h40d0619_1
