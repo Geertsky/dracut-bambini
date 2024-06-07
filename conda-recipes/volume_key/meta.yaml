@@ -26,4 +26,4 @@ requirements:
     - nss
     - python 3.12
     - swig
-    - util-linux=2.39.3
+    - util-linux=2.39.3=py312h40d0619_1

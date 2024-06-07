@@ -30,5 +30,5 @@ requirements:
     - parted
     - pygobject
     - pyparted
-    - util-linux=2.39.3
+    - util-linux=2.39.3=py312h40d0619_1
     - volume_key

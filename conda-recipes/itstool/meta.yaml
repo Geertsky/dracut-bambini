@@ -11,3 +11,4 @@ requirements:
   
   host:
     - docbook-xml
+    - libxml2=2.12.6=h9bf148f_0

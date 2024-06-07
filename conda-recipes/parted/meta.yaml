@@ -27,7 +27,7 @@ requirements:
     - rsync
     - tar
     - texinfo
-    - util-linux=2.39.3
+    - util-linux=2.39.3=py312h40d0619_1
   run:
     - libiconv
     - lvm2

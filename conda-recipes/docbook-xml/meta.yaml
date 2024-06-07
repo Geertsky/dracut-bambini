@@ -8,8 +8,6 @@ source:
 
 requirements:
   host:
-    - libxml2
+    - libxml2=2.12.6=h9bf148f_0
     - sgml-common
     - libarchive
-  build:
-    - libxml2

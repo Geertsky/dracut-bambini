@@ -10,9 +10,9 @@ requirements:
     - {{ compiler('c') }}
     - coreutils
     - glib
-    - libxml2
     - meson
     - ninja
+    - libxml2=2.12.6=h9bf148f_0
     - pkgconfig
     - pygments
   
@@ -22,5 +22,5 @@ requirements:
     - glib
     - itstool
     - libxslt
-    - libxml2
+    - libxml2=2.12.6=h9bf148f_0
     - pygments
