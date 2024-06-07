@@ -1,7 +1,6 @@
 name: bambini-python
 channels:
   - local
-  - /home/geert/miniforge3/conda-bld
   - conda-forge
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
@@ -42,7 +41,7 @@ dependencies:
   - parted=3.6=h9bf148f_0
   - pcre2
   - pip
-    pyparted
+  - pyparted
   - python=3.12.3=hab00c5b_0_cpython
   - python_abi=3.12=4_cp312
   - readline
