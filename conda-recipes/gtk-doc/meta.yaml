@@ -11,12 +11,14 @@ requirements:
     - coreutils
     - glib
     - meson
+    - itstool
     - ninja
     - libxml2=2.12.6=h9bf148f_0
     - pkgconfig
     - pygments
   
   host:
+    - python
     - docbook-xml
     - docbook-xsl-nons
     - glib
