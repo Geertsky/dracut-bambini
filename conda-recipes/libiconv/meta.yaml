@@ -18,6 +18,3 @@ test:
 about:
   home: https://www.gnu.org/software/libiconv/
   license: LGPL
-# Exclude Windows and macOS
-build:
-  skip: true  # [win or osx]

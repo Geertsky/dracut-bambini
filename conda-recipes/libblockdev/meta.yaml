@@ -32,6 +32,3 @@ requirements:
     - pyparted
     - util-linux=2.39.3=py312h40d0619_1
     - volume_key
-# Exclude Windows and macOS
-build:
-  skip: true  # [win or osx]

@@ -39,6 +39,3 @@ about:
   home: http://www.gnu.org/software/parted
   license: GPL-3.0 license
   doc_url: http://www.gnu.org/software/parted/manual/parted.html
-# Exclude Windows and macOS
-build:
-  skip: true  # [win or osx]

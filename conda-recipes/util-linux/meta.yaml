@@ -56,6 +56,3 @@ extra:
     - jaimergp
     - scopatz
     - hmaarrfk
-# Exclude Windows and macOS
-build:
-  skip: true  # [win or osx]
