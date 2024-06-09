@@ -11,8 +11,12 @@ requirements:
   
   host:
     - libxml2
-  
 about:
-    description: GTK-Doc - Documentation generator for C code
-    home: https://gitlab.gnome.org/GNOME/gtk-doc
-    license: GPL (>= 2)
+  home: https://docbook.org/xml/4.5/
+  summary: DocBook is a general purpose [XML] and [SGML] document type particularly well suited to books and papers about computer hardware and software
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

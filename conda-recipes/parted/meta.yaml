@@ -37,5 +37,12 @@ test:
 
 about:
   home: http://www.gnu.org/software/parted
-  license: GPL-3.0 license
+  summary: GNU Parted is a program for creating and manipulating partition tables.
   doc_url: http://www.gnu.org/software/parted/manual/parted.html
+  license: GPL-3.0 license
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

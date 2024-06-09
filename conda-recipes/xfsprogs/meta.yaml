@@ -8,3 +8,13 @@ source:
 requirements:
   build:
     - {{ compiler('c') }}
+about:
+  home: https://github.com/mtanski/xfsprogs
+  summary: XFS User Tools
+  license: GPL-2.0 AND LGPL-2.1
+  license_file:
+    - doc/COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

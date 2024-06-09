@@ -31,3 +31,7 @@ about:
   home: https://github.com/mbroz/cryptsetup
   license: LGPLv2.1
   doc_url: https://gitlab.com/cryptsetup/cryptsetup#documentation
+
+extra:
+  recipe-maintainers:
+    - Geertsky

@@ -12,3 +12,13 @@ requirements:
     - meson
     - ninja
     - pkgconfig
+about:
+  home: https://github.com/benhoyt/inih
+  summary: inih (INI Not Invented Here) is a simple .INI file parser written in C.
+  license: New BSD license
+  license_file:
+    - LICENSE.txt
+
+extra:
+  recipe-maintainers:
+    - Geertsky

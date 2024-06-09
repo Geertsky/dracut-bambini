@@ -9,3 +9,14 @@ source:
 requirements:
   build:
     - {{ compiler('c') }}
+about:
+  home: http://www.zstd.net/
+  summary: Zstandard, or zstd as short version, is a fast lossless compression algorithm, targeting real-time compression scenarios at zlib-level and better compression ratios.
+  license: GPL-2.0 AND BSD
+  license_file:
+    - COPYING
+    - LICENSE
+
+extra:
+  recipe-maintainers:
+    - Geertsky

@@ -13,3 +13,13 @@ requirements:
     - docbook-xml
     - libxml2=2.12.6=h9bf148f_0
     - pkgconfig
+about:
+  home: https://itstool.org/
+  summary: ITS Tool - XML to PO and back again using ITS definitions
+  license: GPL-3.0
+  license_file:
+    - COPYING.GPL3
+
+extra:
+  recipe-maintainers:
+    - Geertsky

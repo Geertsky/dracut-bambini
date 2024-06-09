@@ -20,4 +20,13 @@ test:
 
 about:
   home: https://sourceware.org/lvm2/
-  license:  BSD 2-Clause "Simplified" License.
+  license:  BSD 2-Clause License. AND GPL-2 AND LGPLv2.1
+  summary: LVM2 refers to the userspace toolset that provide logical volume management facilities on linux.
+  license_file:
+    - COPYING
+    - COPYING.BSD
+    - COPYING.LIB
+
+extra:
+  recipe-maintainers:
+    - Geertsky

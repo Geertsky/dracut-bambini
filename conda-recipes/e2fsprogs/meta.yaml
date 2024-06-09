@@ -10,3 +10,11 @@ requirements:
   host:
   build:
     - {{ compiler('c') }}
+about:
+  home: https://e2fsprogs.sourceforge.net/
+  summary: The filesystem utilities for use with the ext2 filesystem. It also supports the ext3 and ext4 filesystems.
+  license: GPL-2.0 AND LGPL-2.1
+
+extra:
+  recipe-maintainers:
+    - Geertsky

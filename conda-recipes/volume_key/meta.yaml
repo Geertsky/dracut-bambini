@@ -27,3 +27,13 @@ requirements:
     - python
     - swig
     - util-linux=2.39.3=py312h40d0619_1
+about:
+  home: https://github.com/felixonmars/volume_key
+  summary: The volume_key project provides a libvolume_key, a library for manipulating storage volume encryption keys and storing them separately from volumes, and an associated command-line tool, named volume_key.
+  license: GPL-2.0
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

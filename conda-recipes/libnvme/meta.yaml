@@ -21,3 +21,13 @@ requirements:
     - pkgconfig
     - python 3.12
     - swig
+about:
+  home: https://github.com/linux-nvme/libnvme
+  summary: This is the libnvme development C library.
+  license: LGPL-2.1
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

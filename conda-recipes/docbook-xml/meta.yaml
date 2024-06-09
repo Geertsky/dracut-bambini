@@ -11,3 +11,11 @@ requirements:
     - libxml2=2.12.6=h9bf148f_0
     - sgml-common
     - libarchive
+
+about:
+  home: https://docbook.org/xml/4.5/
+  summary: DocBook is a general purpose [XML] and [SGML] document type particularly well suited to books and papers about computer hardware and software
+
+extra:
+  recipe-maintainers:
+    - Geertsky

@@ -14,3 +14,13 @@ requirements:
     - autoconf
     - automake
     - {{ compiler('c') }}
+about:
+  home: https://www.docbook.org/xml/
+  summary: Tools for maintaining centralized SGML catalogs.
+  license: GPL
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

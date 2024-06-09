@@ -32,3 +32,13 @@ requirements:
     - pyparted
     - util-linux=2.39.3=py312h40d0619_1
     - volume_key
+about:
+  home: https://github.com/storaged-project/libblockdev
+  summary: libblockdev is a C library supporting GObject introspection for manipulation of block devices.
+  license: LGPL-2.1
+  license_file:
+    - LICENSE
+
+extra:
+  recipe-maintainers:
+    - Geertsky

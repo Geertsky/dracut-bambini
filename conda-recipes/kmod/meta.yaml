@@ -20,3 +20,13 @@ requirements:
     - xz
     - zlib
     - zstd
+about:
+  home: https://github.com/kmod-project/kmod
+  summary: kmod is a set of tools to handle common tasks with Linux kernel modules like insert, remove, list, check properties, resolve dependencies and aliases.
+  license: GPL-2.0 AND LGPL-2.1
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

@@ -26,3 +26,14 @@ requirements:
     - libxslt
     - libxml2=2.12.6=h9bf148f_0
     - pygments
+about:
+  home: http://github.com/storaged-project/blivet
+  summary: GTK-Doc - Documentation generator for C code
+  license: GPL-2.0
+  license_file:
+    - COPYING
+    - COPYING-DOCS
+
+extra:
+  recipe-maintainers:
+    - Geertsky

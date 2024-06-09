@@ -13,3 +13,13 @@ requirements:
     - python 3.12
     - icu
     - zlib
+about:
+  home: https://github.com/GNOME/libxml2
+  summary: libxml2 is an XML toolkit implemented in C, originally developed for the GNOME Project.
+  license: MIT
+  license_file:
+    - Copyright
+
+extra:
+  recipe-maintainers:
+    - Geertsky
