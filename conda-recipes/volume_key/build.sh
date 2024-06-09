@@ -9,7 +9,6 @@ fi
 if [[ ! $PKG_CONFIG_PATH =~ "$CONDA_PREFIX/lib/pkgconfig" ]]; then
   export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$CONDA_PREFIX"/lib/pkgconfig
 fi
-echo PKG_CONFIG_PATH: $PKG_CONFIG_PATH
 autoreconf -fiv              &&
 ./configure --prefix=$PREFIX    \
 make&&make install
