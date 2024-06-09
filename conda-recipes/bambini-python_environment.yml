@@ -1,6 +1,6 @@
 name: bambini-python
 channels:
-  - local
+  - geertsky
   - conda-forge
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
@@ -51,4 +51,3 @@ dependencies:
   - util-linux=2.39.3=py312h40d0619_1
   - wheel
   - xz
-prefix: /home/geert/miniforge3/envs/bambini-python
