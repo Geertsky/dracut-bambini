@@ -1,0 +1,10 @@
+[Unit]
+Description=Wait for Ansible to finish
+
+[Service]
+StandardOutput=journal+console
+Type=oneshot
+ExecStart=/usr/libexec/wait_for_ansible_finished.sh
+
+[Install]
+WantedBy=dracut-pre-mount.service

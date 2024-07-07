@@ -41,6 +41,13 @@ install() {
     $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
   done
 
+  #wait_for_ansible systemd service
+  inst "${moddir}/wait_for_ansible_finished.sh" "/usr/libexec/wait_for_ansible_finished.sh"
+  chown root:root "${initdir}/usr/libexec/wait_for_ansible_finished.sh"
+  inst "${moddir}/wait_for_ansible_finished.service" "${systemdsystemunitdir}/wait_for_ansible_finished.service"
+  chown root:root "${initdir}/${systemdsystemunitdir}/wait_for_ansible_finished.service"
+  $SYSTEMCTL -q --root "${initdir}" enable wait_for_ansible_finished.service
+
   #check if internal-sftp is enabled otherwise enable it here
   if ! grep -q internal-sftp "${initdir}"/etc/ssh/sshd_config; then
     mv "${initdir}/etc/ssh/sshd_config" "${initdir}/etc/ssh/sshd_config.bak"
@@ -56,5 +63,4 @@ install() {
   chroot "${initdir}" ldconfig
 
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
-  inst_hook pre-mount 50 "${moddir}/wait-for-ansible-finished.sh"
 }
