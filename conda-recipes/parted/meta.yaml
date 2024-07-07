@@ -1,0 +1,53 @@
+{% set version = "3.7" %}
+package:
+  name: parted
+  version: {{ version }}
+
+source:
+  url: https://ftp.gnu.org/gnu/parted/parted-{{ version }}.tar.xz
+  sha256: 008de57561a4f3c25a0648e66ed11e7b30be493889b64334a6d70f2c1951ef7b
+
+build:
+  number: 0
+  skip: true # [not unix]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - autoconf
+    - automake
+    - bc
+    - check
+    - gettext
+    - gperf
+    - gzip
+    - libdevmapper
+    - libtool
+    - lvm2
+    - make
+    - perl
+    - pkg-config
+    - python
+    - rsync
+    - sysroot_linux-64
+    - tar
+    - texinfo
+    - util-linux
+  run:
+    - libiconv
+    - lvm2
+test:
+  commands:
+    - parted --help
+
+about:
+  home: http://www.gnu.org/software/parted
+  summary: GNU Parted is a program for creating and manipulating partition tables.
+  doc_url: http://www.gnu.org/software/parted/manual/parted.html
+  license: GPL-3.0 license
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky
