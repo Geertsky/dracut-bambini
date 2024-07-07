@@ -61,9 +61,6 @@ install() {
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
 
-  mkdir "${initdir}/etc/ld.so.conf.d/"
-  echo "/usr/lib64/" > "${initdir}/etc/ld.so.conf.d/libudev-x86_64.conf"
-  chroot "${initdir}" ldconfig
   #install packed conda environment and python binary for glibc dep. resolution.
   inst "${moddir}/bambini-python.tar.gz" "/tmp/bambini-python.tar.gz"
   dd if="/dev/urandom" of="${initdir}/placeholder.img" bs=1M count=500 >/dev/null 2>&1
