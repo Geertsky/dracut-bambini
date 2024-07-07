@@ -1,0 +1,48 @@
+package:
+  name: parted
+  version: 3.6
+
+source:
+  url: https://ftp.gnu.org/gnu/parted/parted-3.6.tar.xz
+  md5: 93d2d8f22baebc5eb65b85da05a79e4e
+
+requirements:
+  host:
+  - python 3.12
+  build:
+    - {{ compiler('c') }}
+    - automake
+    - autoconf
+    - bc
+    - check
+    - gettext
+    - gperf
+    - gzip
+    - libdevmapper
+    - libtool
+    - lvm2
+    - make 
+    - perl
+    - python 3.12
+    - rsync
+    - tar
+    - texinfo
+    - util-linux=2.39.3=py312h40d0619_1
+  run:
+    - libiconv
+    - lvm2
+test:
+  commands:
+    - parted --help
+
+about:
+  home: http://www.gnu.org/software/parted
+  summary: GNU Parted is a program for creating and manipulating partition tables.
+  doc_url: http://www.gnu.org/software/parted/manual/parted.html
+  license: GPL-3.0 license
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

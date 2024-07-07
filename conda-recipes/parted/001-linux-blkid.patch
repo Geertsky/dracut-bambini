@@ -1,0 +1,10 @@
+--- parted/libparted/arch/linux.c       2024-02-21 18:52:03.796021812 +0100
++++ libparted/arch/linux.c      2024-02-22 10:04:21.298474877 +0100
+@@ -26,6 +26,7 @@
+ #include <parted/fdasd.h>
+ #endif
+ 
++#include <blkid/blkid.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>

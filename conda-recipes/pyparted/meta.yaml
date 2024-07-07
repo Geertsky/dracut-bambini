@@ -1,0 +1,34 @@
+{% set name = "pyparted" %}
+{% set version = "3.12.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyparted-{{ version }}.tar.gz
+  sha256: da985e116beb733371feb605b174db9eec8bd0eedffc8f739f8e603f51b521e7
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - parted
+    - pip
+    - python
+  run:
+    - parted
+    - python
+
+about:
+  home: https://github.com/dcantrell/pyparted/
+  summary: Python bindings for GNU parted
+  license: GPL-2.0
+  license_file: COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky
