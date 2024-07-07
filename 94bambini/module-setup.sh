@@ -41,6 +41,13 @@ install() {
     $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
   done
 
+  #unpack bambini-python systemd service
+  inst "${moddir}/unpack_bambini-python.sh" "/usr/libexec/unpack_bambini-python.sh"
+  chown root:root "${initdir}/usr/libexec/unpack_bambini-python.sh"
+  inst "${moddir}/unpack_bambini-python.service" "${systemdsystemunitdir}/unpack_bambini-python.service"
+  chown root:root "${initdir}/${systemdsystemunitdir}/unpack_bambini-python.service"
+  $SYSTEMCTL -q --root "${initdir}" enable unpack_bambini-python.service
+
   #wait_for_ansible systemd service
   inst "${moddir}/wait_for_ansible_finished.sh" "/usr/libexec/wait_for_ansible_finished.sh"
   chown root:root "${initdir}/usr/libexec/wait_for_ansible_finished.sh"
@@ -54,13 +61,17 @@ install() {
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
 
-  #Build and install python
-  #tar --keep-directory-symlink --skip-old-files -zxf "${moddir}"/python.tgz -C "${initdir}"
-  mkdir -p "${initdir}/local/conda/envs/bambini-python"
-  tar -xvf "${moddir}/conda/bambini-python.tar.gz" -C "${initdir}/local/conda/envs/bambini-python/"
   mkdir "${initdir}/etc/ld.so.conf.d/"
   echo "/usr/lib64/" > "${initdir}/etc/ld.so.conf.d/libudev-x86_64.conf"
   chroot "${initdir}" ldconfig
+  #install packed conda environment and python binary for glibc dep. resolution.
+  inst "${moddir}/bambini-python.tar.gz" "/tmp/bambini-python.tar.gz"
+  dd if="/dev/urandom" of="${initdir}/placeholder.img" bs=1M count=500 >/dev/null 2>&1
+  PTMP="$(mktemp -d)"
+  tar -xf "${moddir}/bambini-python.tar.gz" -C "$PTMP" "bin/python3*"
+  PYTHON=$(find ${PTMP} -type f -exec file {} \;|tr -d ":"|awk '{if ($2=="ELF") print $1}')
+  inst "${PYTHON}" "/bin/python"
+  rm -Rf "${PTMP}"
 
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
 }
