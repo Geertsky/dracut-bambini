@@ -1,0 +1,40 @@
+{% set name = "pyudev" %}
+{% set version = "0.24.3" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyudev-{{ version }}.tar.gz
+  sha256: 2e945427a21674893bb97632401db62139d91cea1ee96137cc7b07ad22198fc7
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - libudev
+test:
+  imports:
+    - pyudev
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/pyudev
+  summary: pyudev is a LGPL licensed, pure Python binding for libudev, the device and hardware management and information library for Linux.
+  license: LGPL-2.1
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

@@ -1,0 +1,43 @@
+{% set name = "dbus-python" %}
+{% set version = "1.3.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/c1/d3/6be85a9c772d6ebba0cc3ab37390dd6620006dcced758667e0217fb13307/dbus-python-1.3.2.tar.gz
+  sha256: ad67819308618b5069537be237f8e68ca1c7fcc95ee4a121fe6845b1418248f8
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }} 
+    - patchelf
+  host:
+    - dbus
+    - meson-python
+    - pip
+    - python
+test:
+  imports:
+    - dbus
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: ttps://gitlab.freedesktop.org/dbus/dbus-python
+  summary: dbus-python is the original Python binding for ``dbus``, the reference implementation of the D-Bus protocol.
+  license: Various. See LICENSES/
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky

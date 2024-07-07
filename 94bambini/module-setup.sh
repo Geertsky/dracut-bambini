@@ -8,8 +8,6 @@ check() {
   cd "${moddir}"
   #using a text files to keep things dynamic for now...
   require_binaries $(cat binaries) || return 1
-  #Build requirements pyenv
-  #require_binaries dnf gmake make c89 c99 cc gcc gcc-ar gcc-nm gcc-ranlib gcov gcov-dump gcov-tool lto-dump x86_64-redhat-linux-gcc x86_64-redhat-linux-gcc-13 patch bunzip2 bzcat bzcmp bzdiff bzegrep bzfgrep bzgrep bzip2 bzip2recover bzless bzmore sqlite3 || return 1
   # 0 enables by default, 255 only on request
   return 255
 }

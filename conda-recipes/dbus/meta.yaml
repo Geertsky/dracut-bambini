@@ -1,0 +1,24 @@
+# ------------------------------------------------
+package:
+    name: dbus
+    version: "1.14.10"
+source:
+  url: https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz
+  md5: 46070a3487817ff690981f8cd2ba9376
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - pkgconfig
+  host:
+    - expat
+  
+about:
+  home: https://www.freedesktop.org/wiki/Software/dbus/
+  summary: D-Bus is a message bus system, a simple way for applications to talk to one another.
+  license: Academic Free License version 2.1, or the GNU General Public License version 2
+  license_file:
+    - COPYING
+
+extra:
+  recipe-maintainers:
+    - Geertsky
