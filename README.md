@@ -2,7 +2,7 @@
 
 This [dracut](https://dracut.wiki.kernel.org/index.php/Main_Page) module is created for the ansible bare-metal-install role [ansible-bambini](https://github.com/Geertsky/ansible-bambini).
 It does the following:
-* include `python` in the initial ramdisk. Work is on the way to make use of a conda environment. See issue: [#6](https://github.com/Geertsky/dracut-bambini/issues/6)
+* include `python` in the initial ramdisk. By packaging a conda environment. 
 * pause the boot process just before the root filesystem gets mounted(`pre-mount` hook) 
 * depends on the [dracut-sshd](https://github.com/gsauthof/dracut-sshd) module.
 
@@ -22,15 +22,15 @@ The requirements for this conda environment:
 * named: `bambini-python`
 * packed and stored in `/usr/lib/dracut/modules.d/bambini-python.tar
 * conda modules to include:
-  * _blivet_
+  * blivet
   * cryptsetup
   * parted
-  * _libblockdev_
+  * libblockdev
   * libbytesize
-  * _libkmod_
-  * _libnvme_
-  * _libndctl_
-The requirement written in _italic_ are requirements that still need to be realized. For the other requirements the recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/conda-recipes/)
+  * libkmod
+  * libnvme
+  * libndctl
+The conda recipies are stored at [conda-recipes/](https://github.com/Geertsky/dracut-bambini/conda-recipes/) and hosted at [anaconda.org/geertsky](https://anaconda.org/geertsky/repo)
 
 
 ### initramfs build command
