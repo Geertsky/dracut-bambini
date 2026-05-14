@@ -1,0 +1,41 @@
+name: bambini-python
+channels:
+  - local
+  - geertsky
+  - conda-forge
+dependencies:
+  - _libgcc_mutex
+  - _openmp_mutex
+  - bzip2
+  - ca-certificates
+  - coreutils
+  - dosfstools
+  - e2fsprogs
+  - ld_impl_linux-64
+  - libaio
+  - libexpat
+  - libffi
+  - libgcc-ng
+  - libgomp
+  - libiconv
+  - libnsl
+  - libsqlite
+  - libuuid
+  - libxcrypt
+  - libzlib
+  - lvm2
+  - ncurses
+  - openssl
+  - parted
+  - pip
+  - pyparted
+  - python
+  - python_abi
+  - readline
+  - rpm-tools
+  - setuptools
+  - tk
+  - tzdata
+  - util-linux
+  - wheel
+  - xz
