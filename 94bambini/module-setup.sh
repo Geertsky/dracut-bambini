@@ -25,6 +25,35 @@ install() {
   # dirname is needed for conda/bin/activate... Not required but useful for debugging
   inst /usr/bin/dirname
 
+  # glibc installation
+  #   glibc core
+  inst_libdir_file \
+    'ld-linux*.so.*' \
+    'ld-*.so.*' \
+    'libc.so.*' \
+    'libm.so.*' \
+    'libresolv.so.*'
+  # glibc compatible
+  inst_libdir_file \
+    'libdl.so.*' \
+    'libpthread.so.*' \
+    'librt.so.*' \
+    'libutil.so.*' \
+    'libanl.so.*' \
+    'libBrokenLocale.so.*' \
+    'libthread_db.so.*'
+  # glibc runtime
+  inst_libdir_file \
+    'libnss_*.so.*' \
+    'gconv/*.so' \
+    'gconv/gconv-modules' \
+    'gconv/gconv-modules.cache'
+
+  # add root entry to shadow when not there (f44)
+  if ! grep -qs '^root:' "$initdir/etc/shadow"; then
+    dinfo "Add shadow entry for root"
+    echo "root:*:::::::" >> "$initdir/etc/shadow"
+  fi
   # add permanent ssh-keygen
   inst /usr/bin/ssh-keygen
   inst /usr/libexec/openssh/sshd-keygen
@@ -56,11 +85,6 @@ install() {
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
 
-  PTMP="$(mktemp -d)"
-  tar -xf "${moddir}/bambini-python.tar.gz" -C "$PTMP" "bin/python3*"
-  PYTHON=$(find ${PTMP} -type f -exec file {} \;|tr -d ":"|awk '{if ($2=="ELF") print $1}')
-  inst "${PYTHON}" "/bin/python"
-  rm -Rf "${PTMP}"
-
+  # Install lvm links creation script
   inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
 }
