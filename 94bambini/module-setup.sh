@@ -78,6 +78,8 @@ install() {
   inst "${moddir}/bambini-python.squashfs" "/local/conda/images/bambini-python.squashfs"
   inst_hook pre-mount 01 "$moddir/mount-conda-squashfs.sh"
 
+  # wait_for_ansible as last pre-mount task
+  inst_hook pre-mount 99 "$moddir/wait_for_ansible_finished.sh"
 
   # check if internal-sftp is enabled otherwise enable it here
   if ! grep -q internal-sftp "${initdir}"/etc/ssh/sshd_config; then
