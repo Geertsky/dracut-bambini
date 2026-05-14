@@ -5,7 +5,7 @@
 
 # called by dracut
 check() {
-  require_binaries /usr/sbin/ldconfig /usr/bin/env /usr/bin/tar /usr/bin/gzip /usr/bin/ssh-keygen /usr/libexec/openssh/sshd-keygen|| return 1
+  require_binaries dirname ssh-keygen /usr/libexec/openssh/sshd-keygen|| return 1
 
   # 0 enables by default, 255 only on request
   return 255
@@ -18,14 +18,9 @@ depends() {
 
 # called by dracut
 install() {
-  #Install binaries and additional includes
-  cd "${moddir}"
+  # dirname is needed for conda/bin/activate... Not required but useful for debugging
+  inst /usr/bin/dirname
 
-  inst /usr/bin/env
-  inst /usr/sbin/ldconfig
-  # add tar.gz support
-  inst /usr/bin/tar
-  inst /usr/bin/gzip
   # add permanent ssh-keygen
   inst /usr/bin/ssh-keygen
   inst /usr/libexec/openssh/sshd-keygen
