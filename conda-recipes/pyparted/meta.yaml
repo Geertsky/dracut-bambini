@@ -21,6 +21,8 @@ requirements:
     - parted
     - pip
     - python
+    - setuptools
+    - wheel
   run:
     - parted
     - python
