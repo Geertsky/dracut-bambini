@@ -1,13 +1,13 @@
 {% set name = "pyparted" %}
-{% set version = "3.12.0" %}
+{% set version = "3.13.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pyparted-{{ version }}.tar.gz
-  sha256: da985e116beb733371feb605b174db9eec8bd0eedffc8f739f8e603f51b521e7
+  url: https://files.pythonhosted.org/packages/e7/53/b02306f89dc3eaf949659e8814545cde575867bc0175f60361809af7f71a/pyparted-3.13.0.tar.gz
+  sha256: 443b59eb9ac63b8ca87094e02376646e172c7ea075f955f105889ca3485b06fd
 
 build:
   noarch: python
@@ -31,7 +31,7 @@ about:
   home: https://github.com/dcantrell/pyparted/
   summary: Python bindings for GNU parted
   license: GPL-2.0
-  license_file: COPYING
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
