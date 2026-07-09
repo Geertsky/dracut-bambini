@@ -1,4 +1,5 @@
 #!/bin/bash
+export CFLAGS="${CFLAGS} -std=gnu17"
 ./configure --prefix="$PREFIX" --with-confdir="$PREFIX"/etc/
 make
 make install

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -ex
-
+export CFLAGS="${CFLAGS} -std=gnu17"
 OSX_ARGS=""
 if [[ $target_platform == "osx-"* ]]; then
   # the following do not build on macOS

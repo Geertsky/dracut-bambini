@@ -6,6 +6,7 @@ elif [[ ! $PKG_CONFIG_PATH =~ "$CONDA_PREFIX/lib/pkgconfig" ]]; then
 fi
 mkdir build
 cd build
+export CFLAGS="${CFLAGS} -std=gnu17"
 ../configure --prefix=$PREFIX         \
              --enable-elf-shlibs      \
              --enable-libblkid       \

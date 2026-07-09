@@ -1,5 +1,5 @@
 #!/bin/bash
-
+export CFLAGS="${CFLAGS} -std=gnu17"
 export CFLAGS=$CFLAGS" -I$BUILD_PREFIX/include"
 export PKG_CONFIG_PATH=$BUILD_PREFIX/lib/pkgconfig:${BUILD_PREFIX}/x86_64-conda-linux-gnu/sysroot/lib/pkgconfig
 export CPPFLAGS="$CPPFLAGS"' -I '$BUILD_PREFIX'/include'
