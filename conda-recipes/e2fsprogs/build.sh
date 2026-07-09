@@ -14,6 +14,7 @@ export CFLAGS="${CFLAGS} -std=gnu17"
              --disable-uuidd          \
              --disable-fsck           \
              --exec-prefix=$PREFIX    \
+	     --with-crond-dir=$PREFIX/etc/cron.d/ \
              --with-udev-rules-dir=$PREFIX/lib/udev-rules.d/ \
              --with-systemd-unit-dir=$PREFIX/lib/systemd/system/
 make
