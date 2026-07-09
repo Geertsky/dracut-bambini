@@ -16,6 +16,8 @@ build:
 
 requirements:
   host:
+    - pkg-config
+    - setuptools
     - parted
     - pip
     - python
