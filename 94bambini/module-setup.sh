@@ -55,24 +55,6 @@ install() {
     dinfo "Add shadow entry for root"
     echo "root:*:::::::" >> "$initdir/etc/shadow"
   fi
-  # add permanent ssh-keygen
-#  inst /usr/bin/ssh-keygen
-#  inst /usr/libexec/openssh/sshd-keygen
-#  mkdir -p "${initdir}${systemdsystemconfdir}/sshd.service.d/"
-#  inst "${moddir}/wants.conf" "${systemdsystemconfdir}/sshd.service.d/wants.conf"
-#  inst "${moddir}/after.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf"
-#  inst "${moddir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen@.service"
-#  inst "${moddir}/sshd-keygen.target" "${systemdsystemunitdir}/sshd-keygen.target"
-#  mkdir -p "${initdir}${systemdsystemconfdir}/sshd-keygen@.service.d/"
-#  inst "${moddir}/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf"
-#  inst "${moddir}/conditionfilenotempty.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"
-#  for F in "${systemdsystemconfdir}/sshd.service.d/wants.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf" "${systemdsystemunitdir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen.target" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"; do
-#    chown root:root "${initdir}/${F}"
-#  done
-#  for key in ecdsa ed25519 rsa; do
-#    $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
-#  done
-
   # Add mount hook and install bambini-python.squashfs
   mkdir -p "${initdir}/local/conda/images"
   mkdir -p "${initdir}/local/conda/envs/bambini-python"
