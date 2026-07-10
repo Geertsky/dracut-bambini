@@ -73,5 +73,5 @@ install() {
   fi
 
   # Install lvm links creation script
-#  inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
+  inst_hook pre-pivot 40 "${moddir}/umount-conda-squashfs.sh"
 }
