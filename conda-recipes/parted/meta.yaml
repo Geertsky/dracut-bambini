@@ -27,6 +27,10 @@ requirements:
     - make
     - perl
     - pkg-config
+<<<<<<< HEAD
+=======
+    - python
+>>>>>>> b19627a (Remove 3.12 for python)
     - rsync
     - sysroot_linux-64
     - tar
