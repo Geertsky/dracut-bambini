@@ -9,6 +9,7 @@ dependencies:
   - bzip2
   - ca-certificates
   - coreutils
+  - curl
   - dosfstools
   - e2fsprogs
   - ld_impl_linux-64

@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1  # Increment the build number to reflect changes
+  number: 2  # Increment the build number to reflect changes
   skip: true  # [win]
 
 outputs:

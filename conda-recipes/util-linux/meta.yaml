@@ -11,7 +11,7 @@ source:
   sha256: 7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not unix]
   run_exports:
     - {{ pin_subpackage('util-linux', max_pin='x.x') }}
@@ -20,23 +20,29 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - sysroot_linux-64  2.17  # [linux64]
+    - sysroot_linux-64
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - make
+    - gettext
     - libtool
     - autoconf
     - automake
     - pkg-config
   host:
-    - python 3.12
     - zlib
     - ncurses
     - readline
     - libuuid
+    - libiconv
     - libxcrypt  # [linux]
   run:
-    - python
+    - zlib
+    - ncurses
+    - readline
+    - libuuid
+    - libiconv
+    - libxcrypt  # [linux]
 
 test:
   commands:

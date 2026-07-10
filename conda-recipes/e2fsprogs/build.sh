@@ -9,9 +9,9 @@ cd build
 export CFLAGS="${CFLAGS} -std=gnu17"
 ../configure --prefix=$PREFIX         \
              --enable-elf-shlibs      \
-             --enable-libblkid       \
-             --enable-libuuid        \
+             --disable-libblkid       \
              --disable-uuidd          \
+	     --disable-libuuid	      \
              --disable-fsck           \
              --exec-prefix=$PREFIX    \
 	     --with-crond-dir=$PREFIX/etc/cron.d/ \
@@ -19,6 +19,12 @@ export CFLAGS="${CFLAGS} -std=gnu17"
              --with-systemd-unit-dir=$PREFIX/lib/systemd/system/
 make
 make install
+# Avoid clobbering util-linux / libuuid / krb5 packages.
+rm -f "$PREFIX/bin/compile_et"
+rm -f "$PREFIX/include/com_err.h"
+rm -f "$PREFIX/lib/libcom_err."*
+rm -rf "$PREFIX/share/et"
+rm -f "$PREFIX/share/man/man1/compile_et.1"
 # Copy the [de]activate scripts to $PREFIX/etc/conda/[de]activate.d.
 # This will allow them to be run on environment activation.
 for CHANGE in "activate" "deactivate"

@@ -24,10 +24,12 @@ export CPPFLAGS="${CPPFLAGS} -DSIOCGSKNS=0x894C"
             --disable-nologin    \
             --disable-uuidd      \
             --disable-su         \
+	    --disable-kill	 \
             --disable-setpriv    \
             --disable-runuser    \
             --disable-static     \
             --without-systemd    \
+	    --without-python     \
             --disable-makeinstall-chown \
             --disable-makeinstall-setuid \
             --without-systemdsystemunitdir \

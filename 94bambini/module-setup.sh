@@ -24,6 +24,7 @@ depends() {
 install() {
   # dirname is needed for conda/bin/activate... Not required but useful for debugging
   inst /usr/bin/dirname
+  inst chmod
 
   # glibc installation
   #   glibc core
@@ -55,26 +56,28 @@ install() {
     echo "root:*:::::::" >> "$initdir/etc/shadow"
   fi
   # add permanent ssh-keygen
-  inst /usr/bin/ssh-keygen
-  inst /usr/libexec/openssh/sshd-keygen
-  mkdir -p "${initdir}${systemdsystemconfdir}/sshd.service.d/"
-  inst "${moddir}/wants.conf" "${systemdsystemconfdir}/sshd.service.d/wants.conf"
-  inst "${moddir}/after.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf"
-  inst "${moddir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen@.service"
-  inst "${moddir}/sshd-keygen.target" "${systemdsystemunitdir}/sshd-keygen.target"
-  mkdir -p "${initdir}${systemdsystemconfdir}/sshd-keygen@.service.d/"
-  inst "${moddir}/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf"
-  inst "${moddir}/conditionfilenotempty.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"
-  for F in "${systemdsystemconfdir}/sshd.service.d/wants.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf" "${systemdsystemunitdir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen.target" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"; do
-    chown root:root "${initdir}/${F}"
-  done
-  for key in ecdsa ed25519 rsa; do
-    $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
-  done
+#  inst /usr/bin/ssh-keygen
+#  inst /usr/libexec/openssh/sshd-keygen
+#  mkdir -p "${initdir}${systemdsystemconfdir}/sshd.service.d/"
+#  inst "${moddir}/wants.conf" "${systemdsystemconfdir}/sshd.service.d/wants.conf"
+#  inst "${moddir}/after.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf"
+#  inst "${moddir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen@.service"
+#  inst "${moddir}/sshd-keygen.target" "${systemdsystemunitdir}/sshd-keygen.target"
+#  mkdir -p "${initdir}${systemdsystemconfdir}/sshd-keygen@.service.d/"
+#  inst "${moddir}/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf"
+#  inst "${moddir}/conditionfilenotempty.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"
+#  for F in "${systemdsystemconfdir}/sshd.service.d/wants.conf" "${systemdsystemconfdir}/sshd.service.d/after.conf" "${systemdsystemunitdir}/sshd-keygen@.service" "${systemdsystemunitdir}/sshd-keygen.target" "${systemdsystemconfdir}/sshd-keygen@.service.d/execstartpre.conf" "${systemdsystemconfdir}/sshd-keygen@.service.d/conditionfilenotempty.conf"; do
+#    chown root:root "${initdir}/${F}"
+#  done
+#  for key in ecdsa ed25519 rsa; do
+#    $SYSTEMCTL -q --root "${initdir}" enable sshd-keygen@${key}.service
+#  done
 
   # Add mount hook and install bambini-python.squashfs
   mkdir -p "${initdir}/local/conda/images"
   mkdir -p "${initdir}/local/conda/envs/bambini-python"
+  inst /etc/nsswitch.conf
+
   inst "${moddir}/bambini-python.squashfs" "/local/conda/images/bambini-python.squashfs"
   inst_hook pre-mount 01 "$moddir/mount-conda-squashfs.sh"
 
@@ -88,5 +91,5 @@ install() {
   fi
 
   # Install lvm links creation script
-  inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
+#  inst_hook cmdline 40 "${moddir}/create-lvm-links.sh"
 }

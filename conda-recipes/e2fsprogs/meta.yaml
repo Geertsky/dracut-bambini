@@ -6,10 +6,23 @@ source:
   url: https://deac-ams.dl.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.47.0/e2fsprogs-1.47.0.tar.gz
   md5: 6b4f18a33873623041857b4963641ee9
 
+build:
+  number: 2
+
 requirements:
-  host:
   build:
     - {{ compiler('c') }}
+    - make
+    - pkg-config
+    - sysroot_linux-64
+  host:
+    - krb5
+    - libuuid
+    - util-linux
+  run:
+    - krb5
+    - libuuid
+    - util-linux
 about:
   home: https://e2fsprogs.sourceforge.net/
   summary: The filesystem utilities for use with the ext2 filesystem. It also supports the ext3 and ext4 filesystems.
