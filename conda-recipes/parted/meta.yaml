@@ -24,7 +24,7 @@ requirements:
     - libdevmapper
     - libtool
     - lvm2
-    - make 
+    - make
     - perl
     - pkg-config
     - rsync
