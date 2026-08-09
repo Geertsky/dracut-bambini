@@ -1,0 +1,11 @@
+[Unit]
+Description=Unpack bambini-python
+Before=sshd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/unpack_bambini-python.sh
+
+[Install]
+WantedBy=sysinit.target
+RequiredBy=sshd.service
