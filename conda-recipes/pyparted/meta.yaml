@@ -10,14 +10,15 @@ source:
   sha256: 443b59eb9ac63b8ca87094e02376646e172c7ea075f955f105889ca3485b06fd
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
-  host:
+  build:
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - pkg-config
-    - setuptools
+  host:
     - parted
     - pip
     - python
