@@ -14,27 +14,16 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - autoconf
-    - automake
-    - bc
-    - check
-    - gettext
-    - gperf
-    - gzip
-    - libdevmapper
-    - libtool
-    - lvm2
+    - {{ stdlib('c') }}
     - make
-    - perl
     - pkg-config
-    - python
-    - rsync
-    - sysroot_linux-64
-    - tar
-    - texinfo
-    - util-linux
+  host:
+    - dosfstools
+    - e2fsprogs
+    - libuuid
+    - lvm2
+    - ncurses
   run:
-    - libiconv
     - lvm2
 test:
   commands:
