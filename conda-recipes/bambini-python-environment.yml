@@ -1,6 +1,5 @@
 name: bambini-python
 channels:
-  - local
   - geertsky
   - conda-forge
 dependencies:
