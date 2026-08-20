@@ -64,7 +64,7 @@ install() {
   inst_hook initqueue 50 "$moddir/mount-conda-squashfs.sh"
 
   # wait_for_ansible after python is mounted
-  inst_hook initqueue 55 "$moddir/wait_for_ansible_finished.sh"
+  inst_hook pre-mount 95 "$moddir/wait_for_ansible_finished.sh"
 
   # check if internal-sftp is enabled otherwise enable it here
   if ! grep -q internal-sftp "${initdir}"/etc/ssh/sshd_config; then
