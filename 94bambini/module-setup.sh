@@ -5,7 +5,7 @@
 
 # called by dracut
 check() {
-  require_binaries dirname ssh-keygen /usr/libexec/openssh/sshd-keygen|| return 1
+  require_binaries dirname date|| return 1
 
   [[ -r "${moddir}/bambini-python.squashfs" ]] || {
         derror "Missing ${moddir}/bambini-python.squashfs. See dracut-bambini/conda-recipes/bambini-python.yml"
@@ -25,6 +25,7 @@ install() {
   # dirname is needed for conda/bin/activate... Not required but useful for debugging
   inst /usr/bin/dirname
   inst chmod
+  inst date
 
   # glibc installation
   #   glibc core
@@ -72,6 +73,4 @@ install() {
     awk '!found && /^AcceptEnv/ { print "Subsystem sftp                  internal-sftp"; found=1 } 1' "${initdir}/etc/ssh/sshd_config.bak" >"${initdir}/etc/ssh/sshd_config"
   fi
 
-  # Install umount-conda-squashfs.sh pre-pivot
-  inst_hook pre-pivot 40 "${moddir}/umount-conda-squashfs.sh"
 }
