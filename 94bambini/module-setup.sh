@@ -6,11 +6,7 @@
 # called by dracut
 check() {
   require_binaries dirname date|| return 1
-
-  [[ -r "${moddir}/bambini-python.squashfs" ]] || {
-        derror "Missing ${moddir}/bambini-python.squashfs. See dracut-bambini/conda-recipes/bambini-python.yml"
-        return 1
-  }
+}
   # 0 enables by default, 255 only on request
   return 255
 }
@@ -22,6 +18,11 @@ depends() {
 
 # called by dracut
 install() {
+
+  if [ ! -f "${moddir}/bambini-python.squashfs" ]; then
+    dfatal "Missing ${moddir}/bambini-python.squashfs. See dracut-bambini/conda-recipes/bambini-python.yml"
+    return 1
+  fi
   # dirname is needed for conda/bin/activate... Not required but useful for debugging
   inst /usr/bin/dirname
   inst chmod
