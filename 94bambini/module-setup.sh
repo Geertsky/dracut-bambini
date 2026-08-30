@@ -6,7 +6,6 @@
 # called by dracut
 check() {
   require_binaries dirname date|| return 1
-}
   # 0 enables by default, 255 only on request
   return 255
 }
