@@ -1,6 +1,6 @@
 # Dracut module for bare-metal-install using Ansible
 
-This [dracut](https://dracut.wiki.kernel.org/index.php/Main_Page) module is created for the ansible bare-metal-install role [ansible-bambini](https://github.com/Geertsky/ansible-bambini).
+This [dracut](https://dracut.wiki.kernel.org/index.php/Main_Page) module is created for the ansible bare-metal-install role ansible-bambini role of [bambini](https://github.com/Geertsky/bambini) collection.
 It does the following:
 * include `python` in the initial ramdisk. By packaging a conda environment. 
 * pause the boot process just before the root filesystem gets mounted(`pre-mount` hook) 
