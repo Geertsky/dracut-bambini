@@ -18,8 +18,8 @@ depends() {
 # called by dracut
 install() {
 
-  if [ ! -f "${moddir}/bambini-python.squashfs" ]; then
-    dfatal "Missing ${moddir}/bambini-python.squashfs. See dracut-bambini/conda-recipes/bambini-python.yml"
+  if [ ! -f "${moddir}/tuxifier-python.squashfs" ]; then
+    dfatal "Missing ${moddir}/tuxifier-python.squashfs. See dracut-tuxifier/conda-recipes/tuxifier-python.yml"
     return 1
   fi
   # dirname is needed for conda/bin/activate... Not required but useful for debugging
@@ -56,12 +56,12 @@ install() {
     dinfo "Add shadow entry for root"
     echo "root:*:::::::" >> "$initdir/etc/shadow"
   fi
-  # Add mount hook and install bambini-python.squashfs
+  # Add mount hook and install tuxifier-python.squashfs
   mkdir -p "${initdir}/local/conda/images"
-  mkdir -p "${initdir}/local/conda/envs/bambini-python"
+  mkdir -p "${initdir}/local/conda/envs/tuxifier-python"
   inst /etc/nsswitch.conf
 
-  inst "${moddir}/bambini-python.squashfs" "/local/conda/images/bambini-python.squashfs"
+  inst "${moddir}/tuxifier-python.squashfs" "/local/conda/images/tuxifier-python.squashfs"
   inst_hook initqueue 50 "$moddir/mount-conda-squashfs.sh"
 
   # wait_for_ansible after python is mounted
